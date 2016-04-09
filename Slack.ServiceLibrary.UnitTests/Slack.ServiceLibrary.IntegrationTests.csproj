@@ -6,8 +6,8 @@
     <ProjectGuid>{9C945FCE-F453-40E6-BEE6-B61430E01511}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Slack.ServiceLibrary.UnitTests</RootNamespace>
-    <AssemblyName>Slack.ServiceLibrary.UnitTests</AssemblyName>
+    <RootNamespace>Slack.ServiceLibrary.IntegrationTests</RootNamespace>
+    <AssemblyName>Slack.ServiceLibrary.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
