@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DTO\Payload.cs" />
     <Compile Include="Contracts\ISlackClient.cs" />
+    <Compile Include="Exceptions\IncomingWebHooksDisabledException.cs" />
     <Compile Include="Implementation\SlackClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Slack.ServiceLibrary.Contracts;
 using Slack.ServiceLibrary.DTO;
+using Slack.ServiceLibrary.Exceptions;
 using System;
 using System.Collections.Specialized;
 using System.Net;
@@ -34,11 +35,23 @@ namespace Slack.ServiceLibrary.Implementation
                 NameValueCollection data = new NameValueCollection();
                 data["payload"] = payloadJson;
 
-                var response = client.UploadValues(_uri, "POST", data);
+                try{
+                    var response = client.UploadValues(_uri, "POST", data);
 
-                //The response text is usually "ok"
-                string responseText = _encoding.GetString(response);
-                result = (ResponseSlackClientEnum)Enum.Parse(typeof(ResponseSlackClientEnum), responseText, true);
+                    //The response text is usually "ok"
+                    string responseText = _encoding.GetString(response);
+                    result = (ResponseSlackClientEnum)Enum.Parse(typeof(ResponseSlackClientEnum), responseText, true);
+                }
+                catch(System.Net.WebException ex)
+                {
+                    ///TODO: Add your favorite log system
+                    throw new IncomingWebHookDisabledException("The Slack Incoming WebHooks may be disabled or Slack Url is incorrect.Check it and try again", ex);
+                }
+                catch
+                {
+                    ///TODO: Add your favorite log system
+                    throw;
+                }
             }
 
             return result;
