@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SlackServiceLibrary\Slack.ServiceLibrary.csproj">
+    <ProjectReference Include="..\Slack.ServiceLibrary\Slack.ServiceLibrary.csproj">
       <Project>{9b56961a-de39-44f3-bed2-ac5f0f2e35fd}</Project>
       <Name>Slack.ServiceLibrary</Name>
     </ProjectReference>
