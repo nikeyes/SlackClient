@@ -16,5 +16,5 @@ Payload payload = new Payload()
 ResponseSlackClientEnum result = slackClient.SendMessage(payload);
 ```
 
-See more samples in [IntegrationTests](Slack.ServiceLibrary.IntegrationTests)
+## See more samples in [IntegrationTests](Slack.ServiceLibrary.IntegrationTests)
 
