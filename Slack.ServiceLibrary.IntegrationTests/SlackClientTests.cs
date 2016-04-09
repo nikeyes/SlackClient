@@ -97,6 +97,29 @@ namespace Slack.ServiceLibrary.UnitTests
         }
 
         [TestMethod]
+        public void SendMessage_With_EmojiUrl_In_Payload()
+        {
+            //ARRANGE
+            SlackClient sut = new SlackClient(_slackUrlWithAccessToken);
+            ResponseSlackClientEnum expected = ResponseSlackClientEnum.ok;
+            ResponseSlackClientEnum actual;
+
+            Payload payload = new Payload()
+            {
+                Username = "contacto",
+                Text = @"Text with custom Emoji Icon",
+                Channel = "#devtest",
+                IconEmoji = @":ghost:"
+            };
+
+            //ACT
+            actual = sut.SendMessage(payload);
+
+            //ASSERT
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(Slack.ServiceLibrary.Exceptions.IncomingWebHookDisabledException), AllowDerivedTypes = false)]
         public void SendMessage_With_Incorrect_Slack_Url()
         {
