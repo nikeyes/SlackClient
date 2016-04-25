@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\Attachment.cs" />
+    <Compile Include="DTO\Field.cs" />
     <Compile Include="DTO\Payload.cs" />
     <Compile Include="Contracts\ISlackClient.cs" />
     <Compile Include="Exceptions\IncomingWebHooksDisabledException.cs" />

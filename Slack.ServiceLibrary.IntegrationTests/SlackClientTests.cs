@@ -2,6 +2,7 @@
 using Slack.ServiceLibrary.Contracts;
 using Slack.ServiceLibrary.DTO;
 using Slack.ServiceLibrary.Implementation;
+using System.Collections.Generic;
 
 namespace Slack.ServiceLibrary.UnitTests
 {
@@ -152,5 +153,51 @@ namespace Slack.ServiceLibrary.UnitTests
             //ASSERT
             Assert.IsTrue(true);
         }
+
+        [TestMethod]
+        public void SendMessage_With_Attachments_Payload()
+        {
+            //ARRANGE
+            SlackClient sut = new SlackClient(_slackUrlWithAccessToken);
+            ResponseSlackClientEnum expected = ResponseSlackClientEnum.ok;
+            ResponseSlackClientEnum actual;
+
+            Payload payload = new Payload();
+            payload.Attachments.Add(new Attachment("Fallback Attachment, Test from SlackClient.ServiceLibrary.IntegrationTests")
+            {
+                Color = "danger",
+                Text = "Optional Text from test",
+                Fields = new List<Field>()
+                {
+                    new Field("ShortField1")
+                    {
+                        Short=true,
+                        Value ="Value for Short Field 1"
+                    },
+                    new Field("ShortField2")
+                    {
+                        Short=true,
+                        Value ="Value for Short Field 2"
+                    },
+                    new Field("LongField1")
+                    {
+                        Short=false,
+                        Value ="Value for *Long Long Long Long* Long Field 1"
+                    },
+                    new Field("LongField2WithFormat")
+                    {
+                        Short=false,
+                        Value ="```Value for Long Long Long Long Long Field 2```"
+                    }
+                }
+            });
+
+            //ACT
+            actual = sut.SendMessage(payload);
+
+            //ASSERT
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
