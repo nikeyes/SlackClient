@@ -47,9 +47,10 @@ namespace Slack.ServiceLibrary.DTO
 
         public Payload()
         {
+            //Configure default configuration in Incoming WebHooks configuration.
             _iconUrl = null;
-            _iconEmoji = ":bug:";
-            Channel = "#general";
+            _iconEmoji = null;
+            Channel = null;
             Username ="Slack.ServiceLibrary";
             Text = "Default Text from Slack.ServiceLibrary";
         }
